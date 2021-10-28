@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1-ele" onClick="add()">1</button>
+    <button id="conf-ele" onClick="confirm()">Confirm</button>
+    <a href="whatsapp://send?text=This is WhatsApp sharing example using link" data-action="share/whatsapp/share">Share</a>
+
+    
+
+    <script>
+    btn1 = document.getElementById("btn1-ele");
+
+    arr = []
+    
+    function add(){
+        arr.push(btn1.textContent);
+        console.log(arr);  
+    }
+    
+    function confirm(){
+        sh = document.createElement("a");
+        sh.textContent="Share";
+        sh.href="whatsapp://send?text=This is WhatsApp sharing example using link";
+        sh.setAttribute("data-action","share/whatsapp/share");
+        document.body.appendChild(sh);
+    }
+    </script>
+</body>
+</html>
