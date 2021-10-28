@@ -5,31 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .btn1{
+            margin:4px;
+            padding:4px;
+        }
+        #conf-ele{
+            margin:5px;
+            padding:7px;
+            border:2px solid white;
+            background-color: rgb(149, 252, 171);
+            text-decoration:none;
+            border-radius: 5px;
+            padding:7px;
+            color:black;
+        }
+
+        a{
+            border:2px solid white;
+            background-color: rgb(1, 175, 255);
+            text-decoration:none;
+            border-radius: 5px;
+            padding:7px;
+            color:white;
+        }
+    </style>
 </head>
 <body>
-    <button id="btn1-ele" onClick="add()">1</button>
-    <button id="conf-ele" onClick="confirm()">Confirm</button>
+
+   
     <!-- <a href="whatsapp://send?text=This is WhatsApp sharing example using link" data-action="share/whatsapp/share">Share</a> -->
 
-    
 
     <script>
+
+
+        pr = "Presentees: ";
+
+
+
+
+        console.log("in script")
+
+        for(var i=1;i<=60;i++){
+            console.log("in loop")
+            btn = document.createElement("button");
+            btn.innerText = i;
+            btn.setAttribute("onclick","javascript:add()");
+            btn.setAttribute("class","btn1")
+            document.body.appendChild(btn);
+        }
+
+
+
+
+
     btn1 = document.getElementById("btn1-ele");
 
     arr = []
     
     function add(){
-        arr.push(btn1.textContent);
-        console.log(arr);  
+        console.log("clicked");  
+
     }
     
     function confirm(){
         sh = document.createElement("a");
         sh.textContent="Share";
-        sh.href="whatsapp://send?text=This is WhatsApp sharing example using link";
+        sh.href="whatsapp://send?text="+pr;
         sh.setAttribute("data-action","share/whatsapp/share");
         document.body.appendChild(sh);
+        console.log(pr);
+    }
+
+    var buttons = document.getElementsByTagName('button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].onclick = function () {
+        pr = pr + this.innerText + ", ";
+        this.style.borderColor="green";
+        
+      }
     }
     </script>
+
+    <br><br>
+    <button id="conf-ele" onClick="confirm()">Confirm</button>
+    
 </body>
 </html>
